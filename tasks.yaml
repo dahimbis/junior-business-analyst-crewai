@@ -1,0 +1,51 @@
+collect_insights:
+  description: >
+    Gather the most current business insights on {company} as of {as_of}.
+    Produce 6-10 bullets across Financials, Services, and Market Opportunities. For each bullet:
+    1) state the fact with a number or concrete claim,
+    2) add a one-sentence “why this matters” for a consulting context,
+    3) include a short source note with a link placeholder.
+    Include one peer snapshot comparing {company} vs {peer_set} on 3-5 metrics relevant to 2025.
+  expected_output: >
+    # {company} — Insight Pack ({as_of})
+    ## Financials
+    - Fact: <numbered claim>. Why it matters: <one sentence>. [Source: <link>]
+    - ...
+    ## Services
+    - ...
+    ## Market Opportunities
+    - ...
+    ## Peer Snapshot: {company} vs {peer_set}
+    | Metric | {company} | Peer 1 | Peer 2 | Peer 3 |
+    | --- | --- | --- | --- | --- |
+    | Example metric | value | value | value | value |
+    ## Source Notes
+    [1] <short label> <link>
+  agent: company_insights
+  output_file: output/{company}_insights.md
+
+write_report:
+  description: >
+    Using output/{company}_insights.md, create a one-page recruiter-facing brief for {company} as of {as_of}.
+    Keep it succinct and actionable. Emphasize what a consulting team could pitch or prioritize in the next quarter.
+    Do not describe the process or the agents. Do not use filler language.
+  expected_output: >
+    # {company} One-Page Analyst Brief ({as_of})
+    ## Executive Summary
+    - Three crisp bullets that state where {company} is winning in 2025 and why it matters.
+    ## Growth Thesis for 2025
+    - 2-3 points with numbers that back the thesis.
+    ## Offer-to-Need Map
+    - Map {company} service lines to client problems in 2025.
+      | Client Need | {company} Offer | Proof Point |
+      | --- | --- | --- |
+    ## Peer Benchmark
+    - Short table with 3-5 metrics against {peer_set}. One sentence on where {company} leads or lags.
+    ## Opportunity Shortlist
+    - Three specific plays for the next 6-12 months with a success reason and a risk note.
+    ## Risk Watch
+    - Two risks with how to mitigate.
+    ## Sources
+    - Numbered list that matches inline tags.
+  agent: report_writer
+  output_file: output/{company}_report.md
