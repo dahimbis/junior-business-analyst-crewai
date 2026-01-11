@@ -1,4 +1,4 @@
-# Junior Business Analyst Crewai
+## Junior Business Analyst
 
 This project demonstrates how AI agents can support **business analyst workflows** for consulting firms such as Deloitte, EY, KPMG, and PwC.  
 It uses [CrewAI](https://www.crewai.com/) to coordinate agents that generate **one-page company reports** with financials, services, market opportunities, and 2025 insights.
